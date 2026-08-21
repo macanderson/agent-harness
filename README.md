@@ -1,2 +1,3 @@
-# agent-harness
-My personal stella configurations also compatible with claude code, and oxagen.
+# Custom Skills, Commands, and Context
+
+This repo is my personal harness for use with Stella, compatible also with Claude Code.
