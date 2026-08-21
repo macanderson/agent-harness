@@ -112,3 +112,35 @@ existing code
 `demo-director`
 
 **Meta** — `output-evaluator`, `harness-optimizer`, `connector-author`
+
+## Migration map
+
+The previous set of 37 definitions consolidated to 28. Every one is accounted
+for below.
+
+| Was | Now | Why |
+|---|---|---|
+| `eval-code` | `code-reviewer` | Both were the generalist diff reviewer |
+| `eval-typescript` | `typescript-reviewer` | Renamed to the role |
+| `eval-types` | `typescript-reviewer` | Type-design scoring folded in as a section |
+| `eval-security` | `security-reviewer` | Renamed to the role |
+| `eval-database` | `database-reviewer` | Renamed to the role |
+| `eval-performance` | `perf-auditor` | Merged with `hotpath-perf-auditor` |
+| `hotpath-perf-auditor` | `perf-auditor` | Same job; this copy was truncated mid-sentence |
+| `eval-silent-failure` | `silent-failure-hunter` | Renamed to the role |
+| `eval-comments` | `comment-auditor` | Renamed to the role |
+| `eval-agent` | `output-evaluator` | `eval-agent` read as "an agent for evals" |
+| `break-fix` | `debugger` | Identical once the live-ops integrations were stripped |
+| `doc-updater` | `docs-writer` | Codemap generation became a doc type |
+| `marketing-agent` | `launch-marketer` | Campaign workflow merged into the claims-disciplined one |
+| `e2e-runner` | `e2e-tester` | Renamed for consistency |
+| `knowledge-source-author` | `connector-author` | Generalized off one platform's plugin model |
+| `spec-impl` | `feature-shipper` | Task-list execution folded in |
+| `spec-test` | `test-engineer` | Test-document authoring folded in |
+| `spec-system-prompt-loader` | *removed* | Hardcoded a `.claude/` path; told itself to use no tools while granting all |
+
+Unchanged in name: `architect`, `code-reviewer`, `debugger`, `demo-director`,
+`docs-writer`, `feature-shipper`, `harness-optimizer`, `launch-marketer`,
+`parity-auditor`, `seo-specialist`, `simplifier`, `spec-builder`,
+`spec-design`, `spec-judge`, `spec-requirements`, `spec-tasks`,
+`test-engineer`, `usability-reviewer`, `ux-architect`.
