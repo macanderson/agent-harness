@@ -1,0 +1,77 @@
+# Stella alone on one Terminal-Bench task, run locally.
+#
+#   cd ~/Projects/stella/arenabench
+#   ARENABENCH_STELLA_ADAPTER=$PWD/../bench/harbor_adapter \
+#   uv run python -m arenabench run \
+#     ~/Projects/stella/.stella/arenabench/fix-git-solo.toml --progress
+#
+# Needs: colima running (`colima status`), OPENROUTER_API_KEY exported, and a
+# staged SUT at ~/.arenabench/sut/<sut_ref>/stella.
+#
+# NO CLAUDE CODE SEAT, on purpose. Claude Code is the bar, not a subject: its
+# fix-git number is already recorded — reward 1.0, 1.0 min, $0.21, match
+# 7d025330abad — and re-running it re-measures a constant with money Stella's
+# arm did not get. The comparator returns only if the task set, the model, or
+# the harness changes in a way that makes that number inapplicable.
+
+[match]
+name = "fix-git: Stella on main@868af3e05"
+dataset = "terminal-bench-2.1"
+tasks = ["fix-git"]
+
+# origin/main tip at launch, 2026-08-09. Carries the whole fix-git repair chain
+# the last trial motivated: #2538 (repo_history / repo_recover / .git readable
+# to the witness author / the fd --full-path glob fix), #2551 + #2561 + #2562 +
+# #2565 (project_overview's repository section and its three follow-on repairs),
+# and #2553, so `research` and `plan` below are honoured rather than silently
+# inheriting the worker's xhigh.
+sut_ref = "868af3e056cb02ef88b1b5608d7247f20a2e4891"
+
+attempts = 1
+# One trial at a time. The agent ceiling is wall clock, so two trials racing for
+# one machine manufacture the timeouts you are trying to measure.
+concurrency = 1
+record_video = false
+# Image pulls are not the thing under test.
+setup_timeout_multiplier = 4.0
+
+[[contestant]]
+id = "stella"
+name = "Stella (Sonnet 5, xhigh, full pipeline)"
+agent = "stella"
+color = "#FFB000"
+
+  [contestant.engine]
+  api = "openrouter"
+  model = "anthropic/claude-sonnet-5"
+  reasoning = true
+  effort = "xhigh"
+
+    # Cross-family from the worker on purpose: a verifier running the worker's
+    # own model is the worker grading itself.
+    [contestant.engine.roles.verifier]
+    model = "anthropic/claude-fable-5"
+    effort = "xhigh"
+    reasoning = "on"
+
+    [contestant.engine.roles.triage]
+    model = "anthropic/claude-haiku-4.5"
+    effort = "low"
+    reasoning = "off"
+
+    [contestant.engine.roles.research]
+    model = "anthropic/claude-haiku-4.5"
+    effort = "low"
+    reasoning = "off"
+
+    [contestant.engine.roles.plan]
+    effort = "medium"
+    reasoning = "on"
+
+  [contestant.env]
+  required = ["OPENROUTER_API_KEY"]
+
+# No budget_usd and no max_tokens anywhere, on either arm or any role. A
+# per-trial ceiling turns "the agent ran out of our money" into a task failure
+# on the scoreboard, and only one seat would carry it — the arena refuses a
+# match that declares one.

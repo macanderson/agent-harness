@@ -1,0 +1,2390 @@
+schema = "context-record/v0.1"
+set_id = "macanderson.stella"
+ingest_run_id = "ing_6a77ce42"
+
+[defaults]
+sharing_scope = "repository"
+origin = "imported"
+status = "active"
+
+[defaults.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[[proposal]]
+candidate_id = "agents-md-import-105a496a"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 95
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.agents-md-import"
+record_id = "rec_macanderson_stella_agents_md_import_711d598c8fc0"
+record_hash = "sha256:105a496a5f792f0e5e4ec3275eb642a44ef6a4248a41941a03a1b089bfc7c903"
+kind = "fact"
+statement = "CLAUDE.md imports AGENTS.md via an @AGENTS.md reference at the top of the file."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    3,
+    3,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+paths = [
+    "CLAUDE.md",
+    "AGENTS.md",
+]
+keywords = [
+    "import",
+    "AGENTS.md",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "asserted"
+confidence = 95
+
+[proposal.record.truth.probe]
+kind = "file_contains"
+path = "CLAUDE.md"
+pattern = "@AGENTS.md"
+expect = "present"
+
+[proposal.refutation]
+verdict = "supported"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "file_contains"
+detail = "pattern `@AGENTS.md` is present in CLAUDE.md."
+
+[[proposal]]
+candidate_id = "reference-grade-bar-c764e7b5"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.reference-grade-bar"
+record_id = "rec_macanderson_stella_reference_grade_bar_2e15aa505717"
+record_hash = "sha256:c764e7b554363def38ebfd133a338eabb0eea82aaca9f0d330c943a48dcb012e"
+kind = "rule"
+statement = "Code in this repository must meet a reference-grade Rust quality bar rather than merely working."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    7,
+    15,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "quality",
+    "rust",
+    "reference-grade",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "prefer-durable-design-3e01b0e2"
+proposal_kind = "directive"
+status = "dismissed"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.prefer-durable-design"
+record_id = "rec_macanderson_stella_prefer_durable_design_76168ef72860"
+record_hash = "sha256:3e01b0e2845ffcb255a94f4fa3f4e3025bc8a673af82f094b7a81ff3f51981c9"
+kind = "rule"
+statement = "When two designs both work, ship the one that remains correct in five years under a different maintainer, provider, and model rather than the one that is faster to write today."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    11,
+    15,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "design",
+    "longevity",
+    "tradeoff",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "follow-canonical-crate-d5433af7"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.follow-canonical-crate"
+record_id = "rec_macanderson_stella_follow_canonical_crate_3303682f2fc4"
+record_hash = "sha256:d5433af7f9de7d46cf51949c512c32df726b269dcb81b5b3066717a7652bbbad"
+kind = "rule"
+statement = "For anything non-obvious, find the canonical crate that already solved the same shape (such as tokio, serde, rust-analyzer, cargo, or ripgrep) and follow its structure."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    16,
+    22,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "should"
+precedence = 40
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "canonical crate",
+    "tokio",
+    "serde",
+    "rust-analyzer",
+    "cargo",
+    "ripgrep",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "name-exemplar-in-pr-2878e27a"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.name-exemplar-in-pr"
+record_id = "rec_macanderson_stella_name_exemplar_in_pr_1abc880d7061"
+record_hash = "sha256:2878e27a4d4c143d0a2983b241aa2ee80b45201cb9e68d9ea048e6d5df2937ec"
+kind = "rule"
+statement = "The exemplar crate whose structure was followed must be named in the PR description so the choice is reviewable."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    20,
+    22,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = ["pull-request"]
+keywords = [
+    "PR description",
+    "exemplar",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "neighborhood-is-floor-453937b9"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.neighborhood-is-floor"
+record_id = "rec_macanderson_stella_neighborhood_is_floor_e7f0e0cc6454"
+record_hash = "sha256:453937b933faaa76339aab2f4daaae1bc6ad95945c2b4b664454859f88fce2ce"
+kind = "fact"
+statement = """AGENTS.md's "match the neighborhood" guidance is the floor for code style, not the ceiling."""
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    17,
+    19,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+paths = ["AGENTS.md"]
+keywords = [
+    "match the neighborhood",
+    "style",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "expedient-is-defect-361cf7de"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.expedient-is-defect"
+record_id = "rec_macanderson_stella_expedient_is_defect_7db78f4ae8d1"
+record_hash = "sha256:361cf7defa9e34782c809b3ba4b2c6160a5e5c8585f46aa95880e16fff8f869c"
+kind = "constraint"
+statement = "An expedient shortcut is treated as a defect rather than an acceptable tradeoff."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    23,
+    32,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "expedient",
+    "shortcut",
+    "defect",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "allow-needs-comment-6a140177"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.allow-needs-comment"
+record_id = "rec_macanderson_stella_allow_needs_comment_f1a73870d9c3"
+record_hash = "sha256:6a1401770176aad358fbc28fabe157f9a6856e596359a270fd98f613d7a131fe"
+kind = "rule"
+statement = "An #[allow] attribute must carry a comment explaining why the lint is wrong in that specific place."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    24,
+    26,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "#[allow]",
+    "lint",
+    "comment",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "no-unwrap-runtime-data-c6e737b1"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-unwrap-runtime-data"
+record_id = "rec_macanderson_stella_no_unwrap_runtime_data_c543f28d2c93"
+record_hash = "sha256:c6e737b120480bd533b4e1a7d0d204276ce7187bded5473760b055ceaa88144b"
+kind = "rule"
+statement = "Calling unwrap on runtime data is prohibited."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    25,
+    26,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "unwrap",
+    "runtime data",
+    "panic",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "no-widen-deny-toml-5553c6a6"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-widen-deny-toml"
+record_id = "rec_macanderson_stella_no_widen_deny_toml_1ee6703bf2d2"
+record_hash = "sha256:5553c6a6850ec733814a72e3baf7162511bee78cd42362d8965d36c41583e611"
+kind = "rule"
+statement = "Widening the deny.toml allow-list to turn a gate green is prohibited."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    26,
+    28,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+paths = ["deny.toml"]
+keywords = [
+    "deny.toml",
+    "allow-list",
+    "gate",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.record.truth.probe]
+kind = "path_exists"
+path = "deny.toml"
+expect = "present"
+
+[proposal.refutation]
+verdict = "supported"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "path_exists"
+detail = "path `deny.toml` exists."
+
+[[proposal]]
+candidate_id = "no-raise-file-size-baseline-3fded21f"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-raise-file-size-baseline"
+record_id = "rec_macanderson_stella_no_raise_file_size_baseline_f408e19e3f5c"
+record_hash = "sha256:3fded21fe3f9a45ab51e9f665c050d01d662c28c4609357410820df17faba97e"
+kind = "rule"
+statement = "Raising the ceiling in scripts/file-size-baseline.txt to turn a gate green is prohibited."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    26,
+    28,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+paths = ["scripts/file-size-baseline.txt"]
+keywords = [
+    "file-size-baseline",
+    "gate",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.record.truth.probe]
+kind = "path_exists"
+path = "scripts/file-size-baseline.txt"
+expect = "present"
+
+[proposal.refutation]
+verdict = "supported"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "path_exists"
+detail = "path `scripts/file-size-baseline.txt` exists."
+
+[[proposal]]
+candidate_id = "no-todo-for-design-ea33a905"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-todo-for-design"
+record_id = "rec_macanderson_stella_no_todo_for_design_8d70517390d6"
+record_hash = "sha256:ea33a905ac30c03b7d990e8fa2b7949d30c38366e777e19f99b5ba5236bc1c4b"
+kind = "rule"
+statement = "A TODO must not stand in for the actual design."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    28,
+    29,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "TODO",
+    "design",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "announce-deferred-fix-1523f28a"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.announce-deferred-fix"
+record_id = "rec_macanderson_stella_announce_deferred_fix_e91bdcc10043"
+record_hash = "sha256:1523f28af6e7bfb3a74786d37c84a9367e01963ec75add1c7e5ad954103288c2"
+kind = "rule"
+statement = "If the correct fix is bigger than the session, the deferral must be stated out loud in the final message."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    29,
+    32,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "final message",
+    "deferral",
+    "disclosure",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "no-silent-shortcut-54e2db2a"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-silent-shortcut"
+record_id = "rec_macanderson_stella_no_silent_shortcut_67947dbc0cba"
+record_hash = "sha256:54e2db2a8134919e174546dc6c55421b51c1c1801d8561e73e78959c6a4c5a37"
+kind = "constraint"
+statement = "Shipping a shortcut quietly, without disclosing it, is the one unrecoverable move."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    31,
+    32,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "shortcut",
+    "silence",
+    "disclosure",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "correctness-needs-proof-11ccb7b1"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.correctness-needs-proof"
+record_id = "rec_macanderson_stella_correctness_needs_proof_cc6cc06a0929"
+record_hash = "sha256:11ccb7b11c8ab5cd9967a55942313c2b5ccb95996f74848a48568bc47197541a"
+kind = "rule"
+statement = "Correctness must be demonstrated with a witness test, a property, or a golden diff someone actually read, not merely asserted in a PR description."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    33,
+    37,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "witness test",
+    "property",
+    "golden diff",
+    "proof",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "stella-requires-proof-48c8cd7e"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 85
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.stella-requires-proof"
+record_id = "rec_macanderson_stella_stella_requires_proof_6e40b6a7cb2c"
+record_hash = "sha256:48c8cd7eb9cedf2343bb93abcfd5de3590824daf2f92f569086038b2c7e81999"
+kind = "fact"
+statement = "Stella refuses to call a task done without proof."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    35,
+    37,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "Stella",
+    "proof",
+    "done",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "asserted"
+confidence = 85
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "measure-honestly-4e84f118"
+proposal_kind = "directive"
+status = "dismissed"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.measure-honestly"
+record_id = "rec_macanderson_stella_measure_honestly_b661b6c836cd"
+record_hash = "sha256:4e84f1185a2772a3ef4058b4d5f1ad862b37bf144eb41b58da836e0400fc1ee3"
+kind = "rule"
+statement = "Benchmarks must compare like for like, explicitly name and exclude operational aborts, and report the unflattering number when it is the true one."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    38,
+    43,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = ["benchmark"]
+keywords = [
+    "benchmark",
+    "honesty",
+    "operational aborts",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "architecture-crown-scrutiny-2f004990"
+proposal_kind = "knowledge"
+status = "dismissed"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.architecture-crown-scrutiny"
+record_id = "rec_macanderson_stella_architecture_crown_scrutiny_c3ef439094a3"
+record_hash = "sha256:2f004990113a75b316b54dd6f24b20b4abd306dc5176d4ac9a1d969814330341"
+kind = "fact"
+statement = "The agent loop, the staged pipeline, the context plane, and the port boundaries receive more scrutiny than anything else in the tree."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    44,
+    47,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "agent loop",
+    "staged pipeline",
+    "context plane",
+    "ports",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "determinism-non-negotiable-164ce192"
+proposal_kind = "directive"
+status = "dismissed"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.determinism-non-negotiable"
+record_id = "rec_macanderson_stella_determinism_non_negotiable_a5f314018534"
+record_hash = "sha256:164ce192bcc8315ffcef1c67982f08dc4d9883ab6f42a9d570c6d92f9d45cf41"
+kind = "constraint"
+statement = 'Determinism, replayability, and "ports, not concretions" are non-negotiable in the agent-systems architecture regardless of deadline.'
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    46,
+    47,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "determinism",
+    "replayability",
+    "ports",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "now-vs-right-is-maintainers-call-bfc63dc1"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.now-vs-right-is-maintainers-call"
+record_id = "rec_macanderson_stella_now_vs_right_is_maintainers_call_b12f8fb1ad3b"
+record_hash = "sha256:bfc63dc1675f9459a49cdb69819e72d4dab1bb3f4ebfcd2a8cdc02db84d7c07f"
+kind = "rule"
+statement = 'When "now" and "right" cannot both be had, the agent must state which one is being given up and why and let a human maintainer choose rather than deciding silently.'
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    48,
+    52,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "escalation",
+    "maintainer",
+    "tradeoff",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "bench-conclusion-from-trace-23a2f1e8"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.bench-conclusion-from-trace"
+record_id = "rec_macanderson_stella_bench_conclusion_from_trace_ee4128b37c74"
+record_hash = "sha256:23a2f1e8f0c7cf18162de6c3b400c3d01492d55476770f3ac4b095beac56365f"
+kind = "rule"
+statement = "A bench conclusion must be drawn from the trace, never from a surface signal."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    53,
+    54,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = ["benchmark"]
+keywords = [
+    "bench",
+    "trace",
+    "surface signal",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "surface-readings-wrong-2026-08-07-a0efb424"
+proposal_kind = "knowledge"
+status = "dismissed"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.surface-readings-wrong-2026-08-07"
+record_id = "rec_macanderson_stella_surface_readings_wrong_2026_08_07_f68c9e2f3e0f"
+record_hash = "sha256:a0efb42412569d5ea8e355c3b100c42fed806beeac64ed2cc4dfa1a122446adc"
+kind = "memory"
+statement = 'On 2026-08-07 every surface bench reading was wrong in a different direction, including a flaky-task "5/5 → 3/5 regression", a trial marked ✗ failed that had scored reward 1.0, a WITNESS CONFIRMED that was a false proof off a ModuleNotFoundError, and a "no witness authored" with three stacked structural causes.'
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    55,
+    63,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "2026-08-07",
+    "bench",
+    "false signal",
+    "WITNESS CONFIRMED",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "measured"
+confidence = 88
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "verdict-cell-hides-exception-80ca02b0"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 85
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.verdict-cell-hides-exception"
+record_id = "rec_macanderson_stella_verdict_cell_hides_exception_03033dadba9b"
+record_hash = "sha256:80ca02b0960c9d2de457f85895a34851c3409680bdfc97dc0a923854c40b62b8"
+kind = "fact"
+statement = "The verdict cell is either/or, so it hides the exception when a task passes."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    59,
+    61,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "verdict cell",
+    "either/or",
+    "exception",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "measured"
+confidence = 85
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "open-events-jsonl-first-37f1f5e8"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.open-events-jsonl-first"
+record_id = "rec_macanderson_stella_open_events_jsonl_first_691f32a90dec"
+record_hash = "sha256:37f1f5e8b3f95b9b061d2cbdca6c3fd7b7fc20ffbc200e575d9737b646d7281d"
+kind = "procedure"
+statement = "Open stella-events.jsonl before claiming anything about a bench run."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    64,
+    66,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+paths = ["stella-events.jsonl"]
+tasks = [
+    "benchmark",
+    "investigation",
+]
+keywords = [
+    "stella-events.jsonl",
+    "ground truth",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "events-jsonl-is-ground-truth-cbe43c83"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.events-jsonl-is-ground-truth"
+record_id = "rec_macanderson_stella_events_jsonl_is_ground_truth_347c1988a1cc"
+record_hash = "sha256:cbe43c83bd6ea9a887f5940964d1a8113c633f0c9cdaa237cbc1f46020ea8bb5"
+kind = "fact"
+statement = "stella-events.jsonl is ground truth and the UI and result.json are projections of it."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    65,
+    67,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+paths = [
+    "stella-events.jsonl",
+    "result.json",
+]
+keywords = [
+    "ground truth",
+    "projection",
+    "result.json",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "asserted"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "census-role-model-from-step-usage-7c5692a3"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.census-role-model-from-step-usage"
+record_id = "rec_macanderson_stella_census_role_model_from_step_usage_34881e1008e9"
+record_hash = "sha256:7c5692a3c6efb77c804c2d92659f9729c2c9638b2cc92a8680439574ad6008b8"
+kind = "procedure"
+statement = "Census (role, model) from step_usage before believing a claim about which model ran."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    66,
+    69,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = [
+    "benchmark",
+    "investigation",
+]
+keywords = [
+    "step_usage",
+    "role",
+    "model",
+    "census",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "join-tool-start-result-f5caf65d"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.join-tool-start-result"
+record_id = "rec_macanderson_stella_join_tool_start_result_e70e0b998a1d"
+record_hash = "sha256:f5caf65d284fb27d2108fea7070bdbcb67fd197b9ab2ddec772e00682a5310a3"
+kind = "procedure"
+statement = "Join tool_start to tool_result events to obtain real tool wall clock time."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    69,
+    70,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "should"
+precedence = 40
+
+[proposal.record.steering.applies_to]
+tasks = [
+    "benchmark",
+    "investigation",
+]
+keywords = [
+    "tool_start",
+    "tool_result",
+    "wall clock",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "read-full-proof-reason-1b91266f"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.read-full-proof-reason"
+record_id = "rec_macanderson_stella_read_full_proof_reason_6385a4611176"
+record_hash = "sha256:1b91266f80972016678c8410b7f49484e430fc7b2a12fcc9e6198293d9da5aa9"
+kind = "procedure"
+statement = "Read the full proof reason strings from the event log because they are truncated everywhere else and the truncated half usually matters."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    70,
+    72,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "proof",
+    "reason",
+    "truncated",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "cheap-control-before-bisect-7285357c"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.cheap-control-before-bisect"
+record_id = "rec_macanderson_stella_cheap_control_before_bisect_66851b31c756"
+record_hash = "sha256:7285357c12b4616dc2550b57ca559855eebb77810f1312470f57fb2607cd084a"
+kind = "procedure"
+statement = "Before any bisect, re-run the failing task alone on the old SUT as a cheap control."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    73,
+    76,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = [
+    "investigation",
+    "bisect",
+]
+keywords = [
+    "control",
+    "bisect",
+    "old SUT",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "control-cancelled-bisect-41e2ea27"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 85
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.control-cancelled-bisect"
+record_id = "rec_macanderson_stella_control_cancelled_bisect_27a576273586"
+record_hash = "sha256:41e2ea27784f0a00b6362718cbdde0714dc4ae170053ac7b31beeeb97a0cc1d5"
+kind = "memory"
+statement = "A single control trial on the old SUT cancelled an 11-commit bisect."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    75,
+    77,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "bisect",
+    "control trial",
+    "11-commit",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "measured"
+confidence = 85
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "solve-rate-is-guardrail-5d6bb7d6"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.solve-rate-is-guardrail"
+record_id = "rec_macanderson_stella_solve_rate_is_guardrail_b03a4f013cb2"
+record_hash = "sha256:5d6bb7d68bb209c356a6c298eb06e0eeedd8e66202139f43df16345a7b5abe01"
+kind = "fact"
+statement = "A five-task solve rate cannot resolve anything smaller than a catastrophe and should be treated as a guardrail while the mechanism metrics are the measurement."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    78,
+    82,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "should"
+precedence = 40
+
+[proposal.record.steering.applies_to]
+tasks = ["benchmark"]
+keywords = [
+    "solve rate",
+    "guardrail",
+    "mechanism metrics",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "comparisons-need-repeats-de633e37"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 88
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.comparisons-need-repeats"
+record_id = "rec_macanderson_stella_comparisons_need_repeats_f1dc03a765c7"
+record_hash = "sha256:de633e3735ff7141aa443eb295892d1c1c64295491c5bd2706b87d1b8b28ce11"
+kind = "rule"
+statement = "Benchmark comparisons need repeats per task."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    81,
+    83,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = ["benchmark"]
+keywords = [
+    "repeats",
+    "comparison",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 88
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "multi-commit-runs-confounded-939080bf"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.multi-commit-runs-confounded"
+record_id = "rec_macanderson_stella_multi_commit_runs_confounded_6520806908a7"
+record_hash = "sha256:939080bf74fed65d01a3eebe842a7aa0332305dbd05f8a737ff5ad84b0cc4631"
+kind = "rule"
+statement = "Any two runs differing by more than one commit are confounded and must be reported as such."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    82,
+    84,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+tasks = ["benchmark"]
+keywords = [
+    "confounded",
+    "commit",
+    "reporting",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "agents-md-orientation-doc-eeda0496"
+proposal_kind = "knowledge"
+status = "dismissed"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.agents-md-orientation-doc"
+record_id = "rec_macanderson_stella_agents_md_orientation_doc_8861038056e7"
+record_hash = "sha256:eeda0496a39dfb93b4a002cf88225c3d692bfb83ebb24001fd29d5ae7bd04548"
+kind = "fact"
+statement = "AGENTS.md is the orientation document holding commands, architectural invariants, workspace routing, testing approach, and gotchas."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    85,
+    88,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+paths = ["AGENTS.md"]
+keywords = [
+    "orientation",
+    "commands",
+    "invariants",
+    "routing",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.record.truth.probe]
+kind = "path_exists"
+path = "AGENTS.md"
+expect = "present"
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "agents-md-wins-conflicts-b87a6841"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 95
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.agents-md-wins-conflicts"
+record_id = "rec_macanderson_stella_agents_md_wins_conflicts_c3358525b085"
+record_hash = "sha256:b87a6841008b7dc780d7335668318e2c19d834400bde4801b617f10994b8e3b8"
+kind = "rule"
+statement = "When CLAUDE.md and AGENTS.md disagree, AGENTS.md wins."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    88,
+    89,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+paths = [
+    "CLAUDE.md",
+    "AGENTS.md",
+]
+keywords = [
+    "precedence",
+    "conflict",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 95
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "fix-doc-disagreement-same-pr-2a638ce8"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.fix-doc-disagreement-same-pr"
+record_id = "rec_macanderson_stella_fix_doc_disagreement_same_pr_64c3eef8b07a"
+record_hash = "sha256:2a638ce80f710e60e3a63dd6d1492821d6b159faee470cde1d129af4e58ab2af"
+kind = "rule"
+statement = "A disagreement between CLAUDE.md and AGENTS.md is itself a bug and must be fixed in the same PR in which it was noticed."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    89,
+    90,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+paths = [
+    "CLAUDE.md",
+    "AGENTS.md",
+]
+keywords = [
+    "documentation bug",
+    "same PR",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 90
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "file-issue-for-unfixed-findings-14c0e675"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 95
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.file-issue-for-unfixed-findings"
+record_id = "rec_macanderson_stella_file_issue_for_unfixed_findings_f51bd7cf9ed6"
+record_hash = "sha256:14c0e675667409435433065af76e31391264721025c4a732850ba9cfa4a1995a"
+kind = "rule"
+statement = "Every bug, defect, idea, missing test, piece of unwired code, or logical next step noticed but not fixed in the current change must be filed as a GitHub issue before finishing."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    91,
+    96,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "GitHub issue",
+    "nothing left behind",
+    "handoff",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 95
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "issue-written-as-handoff-aa427a06"
+proposal_kind = "directive"
+status = "dismissed"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+dismissed_reason = "compound_claim"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.issue-written-as-handoff"
+record_id = "rec_macanderson_stella_issue_written_as_handoff_d7e0af54934c"
+record_hash = "sha256:aa427a06dacc0854061ef23e882e7ae47be052f883976533a34aa4172bb0ef8f"
+kind = "rule"
+statement = "Each filed issue must be written as a handoff a fresh agent could execute without the current session's context, including problem, file paths, repro/verify steps, constraints, and definition of done."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    94,
+    97,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "handoff",
+    "repro steps",
+    "definition of done",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.validation]
+rule = "one_verdict_per_record"
+verdict = "compound"
+detail = "the statement carries more than one independently falsifiable assertion, so a single refutation verdict cannot describe it"
+action = "re-extract as separate atomic records"
+
+[[proposal]]
+candidate_id = "search-before-filing-issue-a38aab61"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 92
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.search-before-filing-issue"
+record_id = "rec_macanderson_stella_search_before_filing_issue_4d4aa206f0bb"
+record_hash = "sha256:a38aab61745f0b6e51a01537d3be4d4ce5c09d9e382eca4603e3777391762cab"
+kind = "rule"
+statement = "Search for an existing issue first and link to it rather than duplicating."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    97,
+    98,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "duplicate",
+    "existing issue",
+    "link",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 92
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."
+
+[[proposal]]
+candidate_id = "nothing-left-behind-policy-location-8cbd2393"
+proposal_kind = "knowledge"
+status = "eligible"
+confidence = 90
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.nothing-left-behind-policy-location"
+record_id = "rec_macanderson_stella_nothing_left_behind_policy_location_9c798d11964e"
+record_hash = "sha256:8cbd23934272fb64b49beb0e32d4925980f9da9186c5b886be533f5d6989916a"
+kind = "fact"
+statement = 'The full "Nothing left behind" policy lives in AGENTS.md under the section "Nothing left behind — every finding becomes a fix or a GitHub issue".'
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    98,
+    100,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "info"
+precedence = 15
+
+[proposal.record.steering.applies_to]
+paths = ["AGENTS.md"]
+keywords = [
+    "nothing left behind",
+    "policy",
+    "section",
+]
+
+[proposal.record.enforcement]
+mode = "none"
+
+[proposal.record.truth]
+basis = "asserted"
+confidence = 90
+
+[proposal.record.truth.probe]
+kind = "file_contains"
+path = "AGENTS.md"
+pattern = "Nothing left behind"
+expect = "present"
+
+[proposal.refutation]
+verdict = "supported"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "file_contains"
+detail = "pattern `Nothing left behind` is present in AGENTS.md."
+
+[[proposal]]
+candidate_id = "no-untracked-half-finished-work-a15b8532"
+proposal_kind = "directive"
+status = "eligible"
+confidence = 93
+observed_at = "2026-08-09T00:48:02Z"
+eligibility = "explicit_instruction"
+
+[proposal.record]
+lineage_id = "ctx.macanderson.stella.no-untracked-half-finished-work"
+record_id = "rec_macanderson_stella_no_untracked_half_finished_work_29acca21a837"
+record_hash = "sha256:a15b8532b33affc1d6e64a71d529e180ba7ea8af7a2d51ff019ee8443d39c5ee"
+kind = "constraint"
+statement = "A turn must never end with untracked half-finished work."
+origin = "imported"
+sharing_scope = "repository"
+status = "active"
+
+[proposal.record.provenance]
+source_kind = "document"
+source_uri = "CLAUDE.md"
+source_digest = "sha256:5de1b8dc1e72abd504a708a727b54340ebb060894883c5e4e143fc91fab9eba3"
+source_lines = [
+    100,
+    101,
+]
+repo = "git@github.com:macanderson/stella"
+commit = "8b63b88a"
+ingest_run_id = "ing_6a77ce42"
+extracted_at = "2026-08-09T00:48:02Z"
+extractor = "anthropic/claude-opus-5"
+
+[proposal.record.steering]
+force = "must"
+precedence = 100
+
+[proposal.record.steering.applies_to]
+keywords = [
+    "untracked work",
+    "end of turn",
+]
+
+[proposal.record.enforcement]
+mode = "soft"
+
+[proposal.record.truth]
+basis = "decree"
+confidence = 93
+
+[proposal.refutation]
+verdict = "unfalsifiable"
+checked_at = "2026-08-09T00:48:02Z"
+probe_kind = "none"
+detail = "no probe could judge this claim; measure compliance instead."

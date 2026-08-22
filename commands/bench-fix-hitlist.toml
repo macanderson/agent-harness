@@ -1,0 +1,250 @@
+name = "bench-fix-hitlist"
+description = "Find the ≤25 highest-Impact open issues suppressing arenabench resolve rate and fix each with its own worktree, witness test, and adversarial verify pass."
+argument-hint = "[--limit N] [--dry-run] [--tier A|B|C|D ...]   (default: up to 25, all tiers)"
+allowed-tools = ["Bash(gh:*)", "Bash(rg:*)", "Bash(fd:*)", "Bash(git:*)", "Read", "Grep", "Glob", "Workflow", "AskUserQuestion"]
+disable-model-invocation = true
+
+prompt = """
+# /bench-fix-hitlist
+
+Find the issues most responsible for suppressing the measured arenabench
+resolve rate — not "bugs in `area:bench`" generally, but the specific shape
+CLAUDE.md's bench rule names: false negatives, false positives, wall-clock
+burn, and measurement-validity holes that make a run's conclusion untrustworthy
+even when it completes. Fix up to 25 of them, each in its own isolated
+worktree with its own witness test, then adversarially verify every fix before
+reporting it as done.
+
+**Argument received:** `$ARGUMENTS`
+
+| Form | Meaning |
+|---|---|
+| *(empty)* | up to 25 issues, ranked by Impact, across all four tiers |
+| `--limit N` | cap the hitlist at N instead of 25 (never exceed 25) |
+| `--dry-run` | build and print the ranked, tiered hitlist — launch nothing |
+| `--tier A B` | restrict to the named tier(s) (see the tier table below) |
+
+This command's own invocation is the opt-in the Workflow tool requires — do
+not ask for a second confirmation before calling it, unless `--dry-run` was
+passed, in which case never call it at all.
+
+---
+
+## Step 0 — setup
+
+```sh
+export CLICOLOR_FORCE=0   # gh colourises --json output; breaks jq downstream
+```
+
+## Step 1 — gather candidates
+
+Pull every open issue carrying a resolve-rate-relevant signal. These four
+`pain:*` labels are the primary signal — CLAUDE.md's bench rule is written
+around exactly these failure shapes:
+
+```sh
+for label in "pain:resolve-rate" "pain:false-negative" "pain:false-positive" "pain:wall-clock" "pain:test-invalidator"; do
+  gh issue list --label "$label" --state open --limit 50 \
+    --json number,title,labels,body \
+    --jq --arg l "$label" '.[] | . + {matchedLabel: $l}'
+done
+```
+
+Add the two measurement epics' open children (`Epic: arenabench measurement
+fidelity` #2775, `Epic: verification ladder evidence integrity` #2773) —
+these are the standing trackers for exactly this class of defect:
+
+```sh
+gh issue list --search "in:body #2775" --state open --limit 50 --json number,title,labels,body
+gh issue list --search "in:body #2773" --state open --limit 50 --json number,title,labels,body
+```
+
+Also sweep `area:bench` + `area:pipeline` issues at `P0`/`P1` that carry none
+of the above labels but clearly describe a scoring/measurement defect (a false
+`✗`/`✓`, a dropped trace, a silent 0.0, a credential death mid-match, a
+witness that can't fail). Read the title; don't guess from the label alone.
+
+## Step 2 — dedupe and drop what can't ship this way
+
+Union the candidate set by issue number. Then drop, with a one-line reason
+each:
+
+- **Already has an open PR.** For each candidate `N`:
+  `gh pr list --search "#N in:body" --state open --json number,title,url`.
+  If found, skip — record the PR link instead of re-fixing.
+- **Not a fixable defect.** Research/policy issues ("Decide what...", "Turn on
+  X and measure whether it helps"), bare epics, and anything whose definition
+  of done is a human judgment call rather than code. A workflow agent authoring
+  a witness test cannot resolve those.
+- **Too large for one session in isolation.** A multi-crate architectural
+  redesign (e.g. a `Container-native CandidateWorkspacePort` rewrite) — file a
+  note in the final report instead of queuing it; don't fix it partially.
+- **Stale.** `gh issue view N --comments` — if the code already contains the
+  fix (check the exact symbols named), close it as already-fixed instead of
+  queuing it, same as `/backlog-triage` step 3.
+
+## Step 3 — rank by Impact
+
+Impact (Project #6's Number field, **not** a label — see `/backlog-triage`
+step 6) is how much closing an issue moves the number, which is the ranking
+this command needs, not priority (*when*):
+
+```sh
+gh project item-list 6 --owner macanderson --format json --limit 500 \
+  --jq '.items[] | select(.content.number != null) | {number: .content.number, impact: .impact}'
+```
+
+Join that onto the surviving candidate set. An issue with no Impact score yet
+falls back to priority label order (`P0` > `P1` > `P2`) — don't block the run
+on triaging it first, but note the fallback in the report.
+
+Sort descending by Impact (then priority), and take the top `N` (25 unless
+`--limit` narrows it, and never more than 25 regardless of what `--limit`
+asks for).
+
+## Step 4 — tier by mechanism
+
+Assign each surviving issue to exactly one tier, using its `matchedLabel` /
+content as the signal:
+
+| Tier | Title | What lands here |
+|---|---|---|
+| A | measurement validity | `pain:false-positive`, `pain:test-invalidator`, a witness that can't fail, a verdict that hides an exception — a run that *completes and reports the wrong answer* |
+| B | false negatives | `pain:false-negative` — a real pass scored as a loss (zero-telemetry guard, GPU task on the wrong host, credential death mid-match) |
+| C | wall-clock burn | `pain:wall-clock`, `pain:resolve-rate` shaped as a runaway loop, a missing timeout, a sleep-as-polling-strategy — burns budget without producing a verdict either way |
+| D | structural blockers | everything else that's P0/P1 and prevents a trial from running or scoring at all |
+
+For each issue, extract from its body/comments:
+
+- **mechanism** — one sentence: what's actually broken, mechanically.
+- **evidence** — the file:line, trace id, or match id the issue cites.
+
+## Step 5 — print the plan
+
+One table before doing anything else:
+
+| # | Tier | Impact | Title |
+|---|---|---|---|
+
+Below it: **Dropped** (already-has-PR / not-fixable / stale, with reasons),
+and **Fallback-ranked** (issues with no Impact score yet). State the count
+plainly — how many candidates entered, how many survived, how many of the 25
+slots are filled. If fewer than 25 issues survive, ship fewer — never pad the
+list with a lower-value issue just to hit 25.
+
+If `--dry-run` was passed, **stop here.**
+
+## Step 6 — fix and verify
+
+Build `args.tiers` from the Step 4/5 output — an array of
+`{ key, title, issues: [{ number, title, mechanism, evidence }] }`, one entry
+per tier that has at least one surviving issue — and run the workflow below
+via `Workflow({ script, args: { tiers } })`.
+
+Each issue gets its own worktree, its own witness test (fails on `main`,
+passes with the fix — AGENTS.md's witness-test contract), and its own draft
+PR with `Closes #N` in both the description and a commit trailer (AGENTS.md's
+"closing the issue on merge" rule — title alone never closes it). Every fix is
+then adversarially verified independently before being reported as confirmed.
+
+```js
+export const meta = {
+  name: 'bench-fix-hitlist',
+  description: 'Fix the ranked, tiered arenabench resolve-rate hitlist, each issue in its own worktree with a witness test and an adversarial verify pass',
+  phases: [
+    { title: 'measurement validity' },
+    { title: 'false negatives' },
+    { title: 'wall-clock burn' },
+    { title: 'structural blockers' },
+    { title: 'Verify' },
+  ],
+}
+
+const FIX_SCHEMA = {
+  type: 'object',
+  properties: {
+    issueNumber: { type: 'integer' },
+    branch: { type: 'string' },
+    prUrl: { type: 'string' },
+    witnessTest: { type: 'string', description: 'file path and test name of the authored witness' },
+    summary: { type: 'string' },
+  },
+  required: ['issueNumber', 'branch', 'prUrl', 'witnessTest', 'summary'],
+}
+
+const VERDICT_SCHEMA = {
+  type: 'object',
+  properties: {
+    issueNumber: { type: 'integer' },
+    confirmed: { type: 'boolean' },
+    reason: { type: 'string' },
+  },
+  required: ['issueNumber', 'confirmed', 'reason'],
+}
+
+const allResults = []
+
+for (const tier of args.tiers) {
+  phase(tier.title)
+  const results = await pipeline(
+    tier.issues,
+    issue => agent(
+      `Fix stella issue #${issue.number}: ${issue.title}.
+       Mechanism: ${issue.mechanism}. Evidence: ${issue.evidence}.
+       Read the issue with 'gh issue view ${issue.number} --comments' for full
+       repro steps before touching anything.
+       Work only inside your isolated worktree. Ship a witness test that
+       fails on main and passes with your fix, per AGENTS.md's witness-test
+       contract — run it both ways and say so in your summary.
+       Run 'make gate' (or the narrowest CARGO_SCOPE that covers your crate)
+       before opening the PR; do not open a red PR.
+       Open a draft PR with 'Closes #${issue.number}' in the PR description
+       AND as a trailer on a commit — title alone does not close the issue.
+       Do not touch files outside this issue's scope. If you find something
+       else broken along the way, file it as a GitHub issue per AGENTS.md's
+       "nothing left behind" rule instead of fixing it inline.
+       Return the branch name and PR URL.`,
+      { phase: tier.title, isolation: 'worktree', schema: FIX_SCHEMA }
+    ),
+    fix => {
+      if (!fix) return null
+      return agent(
+        `Adversarially verify the fix for stella issue #${fix.issueNumber} at
+         ${fix.prUrl} (branch ${fix.branch}). Check out that branch in your
+         own worktree. Run the witness test (${fix.witnessTest}) — confirm it
+         passes there. Then stash/checkout main at the PR's merge-base and
+         confirm the same test fails there (fail on old, pass on new — not
+         merely "a test exists"). Confirm the fix's mechanism actually
+         addresses the cited evidence (${fix.summary}), not a symptom beside
+         it. Confirm 'make gate' (or the scoped equivalent) is green on the
+         branch. Default to confirmed=false if you cannot independently
+         reproduce the flip.`,
+        { phase: 'Verify', schema: VERDICT_SCHEMA }
+      ).then(v => ({ ...fix, verdict: v }))
+    }
+  )
+  const confirmed = results.filter(Boolean).filter(r => r.verdict?.confirmed)
+  log(`${tier.title}: ${confirmed.length}/${tier.issues.length} confirmed`)
+  allResults.push({ tier: tier.title, results })
+}
+
+return allResults
+```
+
+## Step 7 — report
+
+One table, most-important first:
+
+| # | Tier | PR | Confirmed | Reason (if not) |
+|---|---|---|---|---|
+
+Then, per AGENTS.md's "nothing left behind" rule:
+
+- **Any fix an agent reported but the verify pass refuted** — do not claim it
+  as done. Leave its draft PR open with a comment stating why verification
+  failed, and leave the source issue open.
+- **Any GitHub issue an agent filed along the way** (things it noticed but
+  didn't fix) — list them so they're not orphaned in a transcript.
+- **The unflattering count**: how many of the 25 candidates ended up
+  genuinely confirmed-fixed, not just "an agent said fixed."
+"""

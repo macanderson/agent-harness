@@ -1,0 +1,51 @@
+{
+  "slug": "stella-architecture",
+  "goal": "Understand how stella is architected - model serving, pipeline, context management, and core agent loop - so a self-improving model playbook can reference real components",
+  "request_key": "23cdde52a12cd43407a425e32c45a85df397a73622563ffe89ac482eb014068a",
+  "inputs": {
+    "symbols": [],
+    "patterns": [],
+    "globs": [
+      "stella-context/**/*.rs",
+      "stella-core/**/*.rs",
+      "stella-model/**/*.rs",
+      "stella-pipeline/**/*.rs"
+    ],
+    "files": [
+      "stella-context/src/lib.rs",
+      "stella-core/src/lib.rs",
+      "stella-model/src/lib.rs",
+      "stella-pipeline/src/lib.rs"
+    ]
+  },
+  "sections": [
+    {
+      "title": "Files matching `stella-context/**/*.rs`",
+      "body": "(no files found)"
+    },
+    {
+      "title": "Files matching `stella-core/**/*.rs`",
+      "body": "(no files found)"
+    },
+    {
+      "title": "Files matching `stella-model/**/*.rs`",
+      "body": "(no files found)"
+    },
+    {
+      "title": "Files matching `stella-pipeline/**/*.rs`",
+      "body": "(no files found)"
+    },
+    {
+      "title": "Excerpts",
+      "body": "## stella-context/src/lib.rs\n    1  // SPDX-License-Identifier: AGPL-3.0-only\n    2  // Copyright (c) 2026 Oxagen, Inc. Commercial licensing: licensing@oxagen.sh\n    3  \n    4  //! `stella-context` — **the context plane**: the single door between the\n    5  //! engine and everything the agent knows that isn't already in the prompt. One\n    6  //! SQLite file, one engine ([`ContextStore`]) holds a bi-temporal property\n    7  //! graph, a fingerprinted embedding index, and episodic memory; on top of it\n    8  //! sits a hybrid, budgeted, cited retrieval pipeline ([`ContextStore::recall`])\n    9  //! and a bi-temporal write-back path ([`ContextStore::upsert`]). Built-in and\n\n## stella-core/src/lib.rs\n    1  // SPDX-License-Identifier: AGPL-3.0-only\n    2  // Copyright (c) 2026 Oxagen, Inc. Commercial licensing: licensing@oxagen.sh\n    3  \n    4  //! `stella-core` — the step-driver. One model call\n    5  //! per step, message accumulation, retry+backoff, context compaction,\n    6  //! tool-output budget + eviction, loop detection, USD budget metering.\n    7  //!\n    8  //! NO I/O of its own: the engine drives through the `Provider` and\n    9  //! `ToolExecutor` traits and emits `AgentEvent`s over a channel. All\n\n## stella-model/src/lib.rs\n    1  // SPDX-License-Identifier: AGPL-3.0-only\n    2  // Copyright (c) 2026 Oxagen, Inc. Commercial licensing: licensing@oxagen.sh\n    3  \n    4  //! `stella-model` — the `Provider` trait plus its concrete adapters: Z.ai\n    5  //! (GLM 5.2, OpenAI-compatible chat), Anthropic (Messages API), OpenAI\n    6  //! (Responses API), Gemini direct (native generateContent), Vertex AI\n    7  //! (generateContent, enterprise auth), and Amazon Bedrock (Converse,\n    8  //! SigV4-signed).\n    9  //!\n\n## stella-pipeline/src/lib.rs\n    1  // SPDX-License-Identifier: AGPL-3.0-only\n    2  // Copyright (c) 2026 Oxagen, Inc. Commercial licensing: licensing@oxagen.sh\n    3  \n    4  //! `stella-pipeline` — the orchestration plane that sits *above*\n    5  //! `stella-core::Engine`. It drives one prompt\n    6  //! through the staged turn flow — **evaluate → enhance → route → execute →\n    7  //! witness → verify → judge → revise** (the witness is authored on demand,\n    8  //! after execution, once the warrant has read the diff) — over injected\n    9  //! ports, emitting an `AgentEvent` at every stage boundary.\n\n"
+    }
+  ],
+  "manifest": {
+    "stella-context/src/lib.rs": "19656ac0454ccb2fc0cc56b35e8a663b1de14eaae70706437b018718c6645a22",
+    "stella-core/src/lib.rs": "00ed87dbe9284270623b52c94082160aba040ff6b349fa57a23ee27c85a003d4",
+    "stella-model/src/lib.rs": "7407ae7c9851f65582e6c5d3959affa424bc55f0d3232d734825cbf431095dc7",
+    "stella-pipeline/src/lib.rs": "e680370b472b03c21b297f0b527ef43311aa64e0e0d332593896db4d6d828251"
+  },
+  "created_at_ms": 1785368750504,
+  "git_head": "c824978833481673a0c6db33c608b5b2c72fe088"
+}

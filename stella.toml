@@ -1,0 +1,18 @@
+# stella.toml
+#
+# <repo>/stella.toml — this repository. Commit it; it is reviewed like source.
+# Full reference: https://github.com/macanderson/stella/docs/spec/config-system/stella.today.toml
+
+[meta]
+schema_version = 1
+scope = "project"
+
+[agents]
+default_model = "openrouter/openrouter/auto"
+auto_mode = "on"
+effort_auto = "on"
+reasoning_auto = "on"
+
+[agents.default]
+effort = "xhigh"
+reasoning = "on"
