@@ -4,17 +4,17 @@ set_id = "macanderson.agent-harness"
 [[record]]
 lineage_id = "oxagen-product-vision"
 label = "Vision"
-record_id = "rec_oxagen_product_vision_a6a875984d03"
-record_hash = "sha256:f147c85f12f1da2c52d1aa7fbdb51bd8ebe736300ddb5beee154fd38ea9a51a9"
+record_id = "rec_oxagen_product_vision_99530973d915"
+record_hash = "sha256:4dbb2c77df2919c79f8a8dde6fee0b210c53857a03731534f6a85d7214210944"
 kind = "fact"
-statement = "Your agents are a workforce now. Oxagen is where you manage them. Set up tools, skills, and rules once, and every agent gets them, in Claude Code, Codex, Cursor, or Stella. Their model and tool calls run through Oxagen, which holds the keys, so a budget or a stop command holds. Sensitive data is stripped before it leaves the machine. Watch any run live, hand an issue to any agent in one click, and show your auditor and your CFO who did what and what it cost."
+statement = "Oxagen is agent workforce management for an always-on organization."
 origin = "user"
 sharing_scope = "workspace"
 status = "active"
 
 [record.provenance]
 source_kind = "proposal"
-source_uri = "oxagen:proposal/prp_9nxr0sptshjecnwq05bxeb"
+source_uri = "oxagen:proposal/prp_2fa91n8a7q81jfybyxwqc3"
 
 [record.steering]
 force = "info"
