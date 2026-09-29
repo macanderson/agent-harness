@@ -4,8 +4,8 @@ set_id = "macanderson.agent-harness"
 [[record]]
 lineage_id = "oxagen-product-vision"
 label = "Vision"
-record_id = "rec_oxagen_product_vision_99530973d915"
-record_hash = "sha256:4dbb2c77df2919c79f8a8dde6fee0b210c53857a03731534f6a85d7214210944"
+record_id = "rec_oxagen_product_vision_c2aa1a099032"
+record_hash = "sha256:9a4624252dd80f784a4efbcc010148dcea3daecc294c7c3d206390858fc4ac52"
 kind = "fact"
 statement = "Oxagen is agent workforce management for an always-on organization."
 origin = "user"
@@ -14,8 +14,8 @@ status = "active"
 
 [record.provenance]
 source_kind = "proposal"
-source_uri = "oxagen:proposal/prp_2fa91n8a7q81jfybyxwqc3"
+source_uri = "oxagen:proposal/prp_wvpxv42bq2g7kw57va55n3"
 
 [record.steering]
-force = "info"
+force = "should"
 
