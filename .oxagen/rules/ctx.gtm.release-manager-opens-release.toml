@@ -1,0 +1,21 @@
+schema = "context-record/v0.1"
+set_id = "macanderson.agent-harness"
+
+[[record]]
+lineage_id = "ctx.gtm.release-manager-opens-release"
+label = "Release Manager Opens Release"
+record_id = "rec_gtm_release_manager_opens_release_9f6a150a8278"
+record_hash = "sha256:2e6494e39ce6a7de57a2f44eb4c2ad5275589a45cde4b3c4e3203d3c061ea511"
+kind = "fact"
+statement = "The release manager opens the release pull request; a person merges it."
+origin = "user"
+sharing_scope = "workspace"
+status = "active"
+
+[record.provenance]
+source_kind = "proposal"
+source_uri = "oxagen:proposal/prp_s1thrhxcq1xghkhms201yh"
+
+[record.steering]
+force = "info"
+
