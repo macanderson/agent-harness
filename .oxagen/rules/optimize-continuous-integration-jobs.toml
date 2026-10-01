@@ -1,0 +1,21 @@
+schema = "context-record/v0.1"
+set_id = "macanderson.agent-harness"
+
+[[record]]
+lineage_id = "optimize-continuous-integration-jobs"
+label = "Optimize continuous integration jobs"
+record_id = "rec_optimize_continuous_integration_jobs_2bfff76f64e6"
+record_hash = "sha256:18112d0d3b63a9fb2337ff5698e80ae6bd735fafe45e4a7621d1b11583678353"
+kind = "rule"
+statement = "Optimize CI jobs for maximum cost savings and at the same time maximum protection."
+origin = "user"
+sharing_scope = "workspace"
+status = "active"
+
+[record.provenance]
+source_kind = "proposal"
+source_uri = "oxagen:proposal/prp_12bke4jcjqw09ebp34c7n6"
+
+[record.steering]
+force = "should"
+
